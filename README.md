@@ -49,8 +49,44 @@ Using the DRF (Django Rest Framework), create scalable and reliable backend REST
     - Add support of getting the list of comments for a particular task.
       - Add support of pagination.
 
-## Submission
 
-- Push your code to a this repository only and do not create your own repository.
-- Update the `README.md` file with instructions on how to run your application.
 
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/rohan664/jira_dashboard.git
+```
+
+Go to the project directory
+
+```bash
+  cd jira_dashboard
+```
+
+Install dependencies
+
+```bash
+  pip install -r requirement.txt
+```
+
+Migration
+
+```bash
+  python manage.py makemigration
+```
+```bash
+  python manage.py migrate
+```
+Run the development server
+
+```bash
+  python manage.py runserver
+```
+
+
+
+## Documentation
+
+Swagger documentation for the API has been implemented. To view the documentation locally, visit http://127.0.0.1:8000/swagger/.
