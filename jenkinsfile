@@ -14,8 +14,8 @@ pipeline {
                     ssh -i $MY_SSH_KEY -o StrictHostKeyChecking=no ${username}@${SERVER_IP} \\
                         'cd /home/ubuntu/django-app && \\
                         source jira_dashboard/bin/activate && \\
+                        cd jira_dashboard/ && \\
                         git pull origin main && \\
-                        cd /jira_dashboard && \\
                         pip install -r requirements.txt && \\
                         sudo systemctl restart jira_dashboard_gunicorn'
                     """
