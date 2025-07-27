@@ -8,7 +8,8 @@ pipeline {
     stages {
         stage("deployment into production server"){
             steps {
-                withCredentials([sshUserPrivateKey(credentialsId: 'django-ssh-key',keyFileVariable: 'MY_SSH_KEY', usernameVariable: 'username')]){
+                withCredentials([sshUserPrivateKey(credentialsId: 'django-ssh-key',keyFileVariable: 'MY_SSH_KEY', usernameVariable: 'username')])
+                {
                     sh '''
                     ssh -i $MY_SSH_KEY -o StrictHostKeyChecking=no ${username}@${SERVER_IP} << 
                     EOF
