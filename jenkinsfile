@@ -16,7 +16,7 @@ pipeline {
                         source jira_dashboard/bin/activate && \\
                         cd jira_dashboard/ && \\
                         git pull origin main && \\
-                        pip install -r requirements.txt && \\
+                        pip install -r requirement.txt && \\
                         sudo systemctl restart jira_dashboard_gunicorn'
                     """
                 }
