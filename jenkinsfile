@@ -6,7 +6,7 @@ pipeline {
     }
 
     stages {
-        stage("deployment into production server"){
+        stage("deployment into production server "){
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'django-ssh-key',keyFileVariable: 'MY_SSH_KEY', usernameVariable: 'username')])
                 {
