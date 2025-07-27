@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    environment {
+        SERVER_IP = credentials('django-server-ip')
+    }
+
+    stages {
+        stage("deployment into production server"){
+            steps {
+                withCredentials([sshUserPrivateKey(credentialsId: 'django-ssh-key',keyFileVariable: 'MY_SSH_KEY', usernameVariable: 'username')]){
+                    sh '''
+                    ssh -i $MY_SSH_KEY -o StrictHostKeyChecking=no ${username}@${SERVER_IP} << 
+                    EOF
+                        cd /home/ubuntu/django-app/jira_dashboard
+                        source jira_dashboard/bin/activate
+                        git pull origin main
+                        pip install -r requirement.txt
+                        sudo systemctl restart jira_dashboard_gunicorn
+
+                    '''
+                }
+
+            }
+        }
+    }
+}
